@@ -21,6 +21,42 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## CI/CD Pipeline Integration
+
+This project is set up with a continuous integration (CI) and continuous deployment (CD) pipeline using **GitHub Actions**. The pipeline automates the process of building and deploying the application to a Kubernetes cluster.
+
+### Key Features of CI/CD Pipeline:
+
+1. **Dockerization**: 
+   - The Laravel application is containerized using Docker. A Docker image is built and pushed to Docker Hub on each push to the `main` branch.
+
+2. **GitHub Actions Workflow**:
+   - The CI pipeline builds the Docker image and pushes it to Docker Hub.
+   - The CD pipeline deploys the application to a Kubernetes cluster using kubectl.
+
+3. **Docker Hub Integration**:
+   - The pipeline uses Docker Hub credentials stored as GitHub secrets (`DOCKER_USERNAME` and `DOCKER_PASSWORD`) for authentication.
+   - The Docker image is tagged and pushed to your Docker Hub repository.
+
+4. **Kubernetes Deployment**:
+   - Once the image is built and pushed, the application is deployed to the Kubernetes cluster using Kubernetes manifests (`Deployment.yaml` and `Service.yaml`).
+   - The pipeline ensures the application is deployed and rolled out with the latest changes.
+
+### Setup Instructions for CI/CD:
+
+1. **Docker Hub Account**: Create a Docker Hub account and generate a Personal Access Token (PAT) to use as the password in GitHub secrets.
+
+2. **GitHub Secrets**:
+   - Add your Docker Hub username and PAT as secrets in your GitHub repository:
+     - `DOCKER_USERNAME`: Your Docker Hub username.
+     - `DOCKER_PASSWORD`: Your Docker Hub Personal Access Token.
+
+3. **Kubernetes Cluster**: 
+   - Ensure you have a Kubernetes cluster set up and that the necessary credentials (Kubeconfig) are added to GitHub secrets as `KUBECONFIG`.
+
+4. **GitHub Actions Workflow**:
+   - The `.github/workflows/deploy.yml` file defines the CI/CD pipeline. It builds the Docker image, pushes it to Docker Hub, and deploys the application to Kubernetes.
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.

@@ -21,12 +21,12 @@ spec:
             - name: APP_ENV
               value: "production"
             - name: APP_KEY
-              value: "your-laravel-app-key"
+              value: "base64:h8KQqAGPjWgdcRvCvZEnDwh6ZUbfjF88FJJn+uZs6/w="
             - name: DB_HOST
               value: "mysql-service"
             - name: DB_DATABASE
-              value: "your-db-name"
+              value: "my_app_2"
             - name: DB_USERNAME
-              value: "your-db-user"
+              value: "root"
             - name: DB_PASSWORD
-              value: "your-db-password"
+              value: "magynevy@11055"
